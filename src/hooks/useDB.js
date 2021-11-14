@@ -49,7 +49,7 @@ export const useDB = (colName) => {
   const updateLike = async (postLike, postId, type) => {
     try {
       const docRef = doc(db, "posts", postId);
-      console.log(type, postLike);
+      console.log(type, postLike, postId);
       await updateDoc(
         docRef,
         { likes: postLike + (type === "decrement" ? -1 : 1) },

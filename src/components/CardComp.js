@@ -20,9 +20,10 @@ const CardComp = ({
   const [likes, setLikes] = useState(0);
 
   const { updateLike } = useDB("posts");
+  console.log(postLikes, postId);
 
   useEffect(() => {
-    if (postLikes) {
+    if (postLikes >= 0) {
       setLikes(postLikes);
     }
   }, [postLikes]);
