@@ -1,43 +1,41 @@
-import { realdb } from "../firebase";
-import { get, ref, set, child, push } from "firebase/database";
-import { useState } from "react";
+// import { realdb } from "../firebase";
+// import { ref, set, push } from "firebase/database";
+import { useEffect, useState } from "react";
 
 export const useLikes = (userId) => {
-  const getLikesforUser = async () => {
-    try {
-      const dbRef = ref(realdb);
-      const likedPosts = await (
-        await get(child(dbRef, `likes/${userId}`))
-      ).val();
-      console.log(likedPosts);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const [likes, setLikes] = useState(() => {
     let storedLikes = JSON.parse(localStorage.getItem("likes"));
-    getLikesforUser();
-    if (storedLikes) {
+    if (
+      JSON.stringify(storedLikes) === JSON.stringify({}) ||
+      storedLikes === null
+    ) {
+      return [];
+    } else {
       return storedLikes;
     }
-    return [];
   });
 
-  const addLike = (postId) => {
-    let likesArray = JSON.parse(localStorage.getItem("likes")) || [];
-    try {
-      const likeRef = ref(realdb, `likes/${userId}`);
-      const newLikes = push(likeRef);
-      set(newLikes, { postId });
-      if (likesArray) {
-        likesArray.push(postId);
-      }
-      setLikes([...likes, postId]);
-      localStorage.setItem("likes", JSON.stringify(likesArray));
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    // const starCountRef = ref(realdb, `likes/${userId}`);
+    // onValue(starCountRef, (snapshot) => {
+    //   const data = snapshot.val();
+    //   const userLikes = Object.values(data).map((like) => like.postId);
+    //   console.log(userLikes);
+    //   setLikes((prev) => [...userLikes]);
+    // });
+    console.log("likes hook");
+  }, []);
+
+  const addLike = (postId, type) => {
+    let likesArray = likes;
+    if (type === "remove") {
+      const index = likesArray.indexOf(postId);
+      likesArray.splice(index, 1);
+    } else {
+      likesArray.push(postId);
     }
+    setLikes(likesArray);
+    localStorage.setItem("likes", JSON.stringify(likesArray));
   };
 
   return { likes, addLike };

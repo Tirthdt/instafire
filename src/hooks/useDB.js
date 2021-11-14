@@ -46,11 +46,15 @@ export const useDB = (colName) => {
     }
   };
 
-  const updateLike = async (postLike, postId) => {
-    console.log(postLike);
+  const updateLike = async (postLike, postId, type) => {
     try {
       const docRef = doc(db, "posts", postId);
-      await updateDoc(docRef, { likes: postLike + 1 }, { merge: true });
+      console.log(type, postLike);
+      await updateDoc(
+        docRef,
+        { likes: postLike + (type === "decrement" ? -1 : 1) },
+        { merge: true }
+      );
     } catch (err) {
       console.log(err);
     }

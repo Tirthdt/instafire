@@ -3,7 +3,7 @@ import { Card, CardFooter, CardHeader } from "../styledComps/Card.styled";
 import { ImageBlock } from "../styledComps/Utilities";
 import { FaUser } from "react-icons/fa";
 
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { IconButton } from "../styledComps/Button.styled";
 import { Caption } from "../styledComps/Utilities";
 import { useDB } from "../hooks/useDB";
@@ -39,11 +39,11 @@ const CardComp = ({
         <CardFooter>
           <IconButton
             onClick={() => {
-              addLike(postId);
-              updateLike(likes, postId);
+              addLike(postId, liked ? "remove" : "add");
+              updateLike(likes, postId, liked ? "decrement" : "increment");
             }}
           >
-            <BsHeart fill={liked ? "red" : ""} />
+            {liked ? <BsHeartFill fill={"red"} /> : <BsHeart />}
           </IconButton>
           {likes} likes
         </CardFooter>
