@@ -45,3 +45,11 @@ export const IconButton = styled.button`
 export const ButtonBlock = styled(ButtonMD)`
   display: block;
 `;
+
+export const ButtonClose = styled(Button)`
+  background: transparent;
+  padding: 10px 5px;
+  font-size: 18px;
+  border-radius: 50%;
+  float: right;
+`;

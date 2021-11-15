@@ -24,3 +24,11 @@ export const Input = styled.input`
   margin-bottom: 10px;
   font-family: "Heebo", sans-serif;
 `;
+
+export const InputFixed = styled(Input)`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
+`;

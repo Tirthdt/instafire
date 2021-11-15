@@ -12,6 +12,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 import { GlobalStyles } from "./styledComps/Global";
 import { Route, Routes } from "react-router-dom";
+import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               }
             />
             <Route path="/test" element={<Test />} />
+            <Route path="/comment" element={<Comments />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ErrorComp>

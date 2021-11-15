@@ -54,6 +54,23 @@ export const Loading = styled.div`
   text-align: center;
 `;
 
+export const Comment = styled.div`
+  border-bottom: 0.5px solid #111;
+  font-size: 18px;
+  margin-bottom: 15px;
+  p.user {
+    display: inline;
+    width: 20%;
+    height: 100%;
+    font-weight: bold;
+  }
+
+  p.comment {
+    width: 80%;
+    opacity: 0.8;
+  }
+`;
+
 export const ProgressBar = styled.div`
   height: 5px;
   background: #b91646;

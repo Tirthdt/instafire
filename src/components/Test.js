@@ -1,28 +1,14 @@
 import React from "react";
-import CardComp from "./CardComp";
-import { useDB } from "../hooks/useDB";
+import { useState } from "react/cjs/react.development";
+import { Button } from "../styledComps/Button.styled";
+import Comments from "./Comments";
 
 const Test = () => {
-  const { getData } = useDB("posts");
-
-  const [posts, loading] = getData();
-
-  console.log(posts);
-
+  const [open, setOpen] = useState(false);
   return (
     <>
-      {loading ? (
-        <h1>Loading</h1>
-      ) : (
-        posts.map((post) => (
-          <CardComp
-            key={post.id}
-            user={post.userName}
-            caption={post.caption}
-            imgSrc={post.url}
-          />
-        ))
-      )}
+      <Button onClick={(e) => setOpen(true)}>Open Comments</Button>
+      {open && <Comments setOpen={setOpen} id={"DzLyux31eR52SqJcHSUg"} />}
     </>
   );
 };

@@ -35,3 +35,36 @@ export const CardFooter = styled.p`
   display: flex;
   align-items: center;
 `;
+
+export const CardFixed = styled(Card)`
+  position: fixed;
+  width: 40%;
+  height: 500px;
+  max-height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: 4;
+`;
+
+export const CardBody = styled.div`
+  padding: 0 15px;
+  margin-top: 20px;
+  max-height: 70%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+`;

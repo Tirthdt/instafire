@@ -4,9 +4,10 @@ import { ImageBlock } from "../styledComps/Utilities";
 import { FaUser } from "react-icons/fa";
 
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import { IconButton } from "../styledComps/Button.styled";
+import { Button, IconButton } from "../styledComps/Button.styled";
 import { Caption } from "../styledComps/Utilities";
 import { useDB } from "../hooks/useDB";
+import Comments from "./Comments";
 
 const CardComp = ({
   postId,
@@ -18,6 +19,7 @@ const CardComp = ({
   addLike,
 }) => {
   const [likes, setLikes] = useState(0);
+  const [showComments, setShowComments] = useState(false);
 
   const { updateLike } = useDB("posts");
   console.log(postLikes, postId);
@@ -30,6 +32,7 @@ const CardComp = ({
 
   return (
     <>
+      {showComments && <Comments id={postId} setOpen={setShowComments} />}
       <Card>
         <CardHeader left={true} rm={true}>
           <FaUser />
@@ -47,6 +50,7 @@ const CardComp = ({
             {liked ? <BsHeartFill fill={"red"} /> : <BsHeart />}
           </IconButton>
           {likes} likes
+          <Button onClick={(e) => setShowComments(true)}>Show Comments</Button>
         </CardFooter>
       </Card>
     </>
