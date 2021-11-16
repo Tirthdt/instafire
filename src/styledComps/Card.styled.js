@@ -6,6 +6,10 @@ export const Card = styled.div`
   margin: 3rem auto;
   box-shadow: 0 0 0 3px #111;
   padding-bottom: 10px;
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 70%;
+  }
 `;
 
 export const CardHeader = styled.h2`
@@ -28,12 +32,10 @@ export const CardHeader = styled.h2`
   }
 `;
 
-export const CardFooter = styled.p`
-  font-size: 14px;
+export const CardFooter = styled.div`
+  font-size: 18px;
   text-align: center;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
 `;
 
 export const CardFixed = styled(Card)`
@@ -46,6 +48,10 @@ export const CardFixed = styled(Card)`
   transform: translate(-50%, -50%);
   background: #fff;
   z-index: 4;
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 80%;
+  }
 `;
 
 export const CardBody = styled.div`

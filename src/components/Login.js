@@ -62,7 +62,9 @@ const Login = () => {
           </ButtonMD>
         </FormControl>
         <CardFooter>
-          New here ? <Link to="/signup">Sign Up</Link>
+          <p>
+            New here ? <Link to="/signup">Sign Up</Link>
+          </p>
         </CardFooter>
       </Card>
       )

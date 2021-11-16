@@ -39,4 +39,11 @@ export const GlobalStyles = createGlobalStyle`
     .link-white{
         color: #fff;
     }
+
+    @media(max-width: ${({ theme }) => theme.mobile}){
+        .container{
+            width: unset;
+            max-width: unset;
+        }
+    }
 `;

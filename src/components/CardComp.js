@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardFooter, CardHeader } from "../styledComps/Card.styled";
+import { FaRegCommentAlt } from "react-icons/fa";
 import { ImageBlock } from "../styledComps/Utilities";
 import { FaUser } from "react-icons/fa";
-
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import { Button, IconButton } from "../styledComps/Button.styled";
+import { IconButton } from "../styledComps/Button.styled";
 import { Caption } from "../styledComps/Utilities";
 import { useDB } from "../hooks/useDB";
 import Comments from "./Comments";
@@ -50,7 +50,9 @@ const CardComp = ({
             {liked ? <BsHeartFill fill={"red"} /> : <BsHeart />}
           </IconButton>
           {likes} likes
-          <Button onClick={(e) => setShowComments(true)}>Show Comments</Button>
+          <IconButton onClick={(e) => setShowComments(true)}>
+            <FaRegCommentAlt />
+          </IconButton>
         </CardFooter>
       </Card>
     </>

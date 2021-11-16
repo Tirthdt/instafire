@@ -26,6 +26,10 @@ export const ButtonMD = styled(Button)`
     opactity: 0.9;
     transform: scale(1.05);
   }
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: unset;
+  }
 `;
 
 export const IconButton = styled.button`
@@ -44,6 +48,24 @@ export const IconButton = styled.button`
 
 export const ButtonBlock = styled(ButtonMD)`
   display: block;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 80%;
+  }
+`;
+
+export const ButtonFAB = styled(Button)`
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  height: auto;
+  border-radius: 50%;
+
+  svg {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    height: 40px;
+  }
 `;
 
 export const ButtonClose = styled(Button)`

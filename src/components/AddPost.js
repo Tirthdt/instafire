@@ -4,6 +4,7 @@ import { ImageBlock } from "../styledComps/Utilities";
 import { ButtonBlock } from "../styledComps/Button.styled";
 import { Input } from "../styledComps/Inputs.styled";
 import { Card, CardHeader } from "../styledComps/Card.styled";
+import { useNavigate } from "react-router-dom";
 import Progress from "./Progress";
 
 const AddPost = () => {
@@ -13,13 +14,15 @@ const AddPost = () => {
   const [begin, setBegin] = useState(false);
   const [upload, setUpload] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (upload === "completed") {
-      console.log("completed");
       setFile(null);
       setBegin(false);
+      navigate("/home");
     }
-  }, [upload]);
+  }, [upload, navigate]);
 
   const {
     user: { uid, displayName },
